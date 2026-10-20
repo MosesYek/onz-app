@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Join my trip on Onzz</title>
-<meta name="description" content="You're invited to plan a trip together on Onzz. Tap to join.">
+<title>Join my trip on Onz</title>
+<meta name="description" content="You're invited to plan a trip together on Onz. Tap to join.">
 <!-- Link previews in Messages, WhatsApp, Telegram, LINE… -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Onzz">
-<meta property="og:title" content="Join my trip on Onzz 🗺️">
+<meta property="og:site_name" content="Onz">
+<meta property="og:title" content="Join my trip on Onz 🗺️">
 <meta property="og:description" content="Tap to join the plan — add places, see changes live.">
 <meta property="og:image" content="https://mosesyek.github.io/onz-app/icon.png">
 <meta name="twitter:card" content="summary">
@@ -58,22 +58,22 @@
 
   <section id="invite" hidden>
     <h1>You're invited to a trip</h1>
-    <p>Plan it together on Onzz — add places and see changes live.</p>
+    <p>Plan it together on Onz — add places and see changes live.</p>
     <div class="card">
       <div class="label">Trip code</div>
       <div class="code" id="code" aria-live="polite"></div>
-      <a class="btn primary" id="open" href="#">Open in Onzz</a>
+      <a class="btn primary" id="open" href="#">Open in Onz</a>
       <button class="btn secondary" id="copy" type="button">Copy code</button>
     </div>
     <ol class="steps">
-      <li><span class="n">1</span><span>Tap <b>Open in Onzz</b> and you'll join the trip.</span></li>
-      <li><span class="n">2</span><span>Nothing happened? Open Onzz → <b>Join with a code</b> and enter the code above.</span></li>
+      <li><span class="n">1</span><span>Tap <b>Open in Onz</b> and you'll join the trip.</span></li>
+      <li><span class="n">2</span><span>Nothing happened? Open Onz → <b>Join with a code</b> and enter the code above.</span></li>
     </ol>
   </section>
 
   <section id="bad" class="error" hidden>
     <h1>This invite link is incomplete</h1>
-    <p>Ask your friend for the 6-character trip code, then open Onzz → <b>Join with a code</b>.</p>
+    <p>Ask your friend for the 6-character trip code, then open Onz → <b>Join with a code</b>.</p>
   </section>
 </main>
 <script>
@@ -85,10 +85,10 @@
     document.getElementById("bad").hidden = false;
     return;
   }
-  var appURL = "cityhunter://join/" + raw;
+  var appURL = "onz://join/" + raw;
   document.getElementById("invite").hidden = false;
   document.getElementById("code").textContent = raw;
-  document.title = "Join trip " + raw + " on Onzz";
+  document.title = "Join trip " + raw + " on Onz";
   var open = document.getElementById("open");
   open.href = appURL;
 
@@ -100,7 +100,7 @@
     } else { done(); }
   });
 
-  // Try once on arrival (Safari asks "Open in Onzz?"); the button stays for
+  // Try once on arrival (Safari asks "Open in Onz?"); the button stays for
   // browsers inside chat apps, which only open apps from a real tap.
   setTimeout(function () { location.href = appURL; }, 400);
 })();
