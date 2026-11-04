@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://onztrip.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://onztrip.com/">
-<link rel="icon" href="icon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +22,12 @@
 <style>
 body{margin:0;background:#fff}
 a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.asb{display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 18px 0 14px;box-sizing:border-box;border-radius:12px;background:#000;color:#fff;border:1px solid #a6a6a6;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,sans-serif;text-decoration:none;line-height:1}
+.asb:hover{text-decoration:none;opacity:.85}
+.asb svg{width:26px;height:26px;flex:none;margin-top:-3px}
+.asb span{display:flex;flex-direction:column;font-size:23px;font-weight:600;letter-spacing:-.02em}
+.asb small{font-size:11px;font-weight:500;letter-spacing:.01em;margin-bottom:2px}
+.asb-light{background:#fff;color:#000;border-color:#fff}
 .wrap{max-width:1024px;margin:0 auto;padding:0 22px;box-sizing:border-box}
 .bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
 .s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:span 6}
@@ -105,7 +111,7 @@ html{scroll-behavior:auto}
 <h1 class="hero-h intro" style="--d: 120ms; margin: 0; font-size: 96px; line-height: 1.04; font-weight: 700; letter-spacing: -0.03em">Plan it together.</h1>
 <p class="intro" style="--d: 240ms; margin: 20px auto 0; max-width: 620px; font-size: 24px; line-height: 1.35; color: #6e6e73; font-weight: 400">One shared plan for the whole group. Days, places and times on a map, with everyone editing live.</p>
 <div class="intro" style="--d: 360ms; margin-top: 32px; display: flex; gap: 28px; justify-content: center; align-items: center; flex-wrap: wrap">
-<a href="#download" style="display: inline-flex; align-items: center; gap: 8px; background: #000; color: #fff; padding: 14px 26px; border-radius: 980px; font-size: 17px; font-weight: 500; text-decoration: none">[App Store badge] Download</a>
+<a class="asb" href="#download" aria-label="Download on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small>App Store</span></a>
 <a href="#features" style="font-size: 19px; color: #0066cc">Learn more ›</a>
 </div>
 
@@ -464,7 +470,7 @@ html{scroll-behavior:auto}
 <h2 class="sec-h reveal" style="margin: 0; font-size: 64px; line-height: 1.04; font-weight: 700; letter-spacing: -0.025em">Where to next?</h2>
 <p style="margin: 16px 0 0; font-size: 21px; line-height: 1.4; opacity: 0.92">Free to download. Your first [2] trips are on us.</p>
 <div style="margin-top: 28px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center">
-<a href="#download" style="display: inline-flex; align-items: center; background: #fff; color: #000; padding: 14px 26px; border-radius: 980px; font-size: 17px; font-weight: 600; text-decoration: none">[App Store badge] Download</a>
+<a class="asb asb-light" href="#download" aria-label="Download on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on the</small>App Store</span></a>
 <span style="font-size: 14px; opacity: 0.8">Requires iOS 26</span>
 </div>
 </div>
