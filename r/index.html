@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join Onz with a friend's code</title>
+<meta name="description" content="A friend invited you to Onz, the app for planning trips together.">
+<!-- Link previews in Messages, WhatsApp, Telegram, LINE… -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Onz">
+<meta property="og:title" content="Plan trips with friends on Onz 🗺️">
+<meta property="og:description" content="Sign up with my code so it counts for me.">
+<meta property="og:image" content="https://onztrip.com/icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F7F8F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171B19" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" href="../favicon.png?v=3">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png?v=3">
+<style>
+  :root {
+    --bg: #F7F8F3; --card: #FFFFFF; --text: #171B19; --muted: #6B716B;
+    --accent: #3F6B00; --lime: #C5F36A; --ink: #171B19; --line: rgba(23,27,25,.10);
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #171B19; --card: #262D29; --text: #F7F8F3; --muted: #9AA19A; --accent: #C5F36A; --line: rgba(247,248,243,.12); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100dvh; display: grid; place-items: center;
+    padding: 24px 16px calc(24px + env(safe-area-inset-bottom));
+    font: 17px/1.4 Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 380px; text-align: center; }
+  .icon { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 10px 28px rgba(23,27,25,.22); }
+  h1 { font-size: 26px; line-height: 1.2; margin: 18px 0 6px; letter-spacing: -.01em; }
+  p { margin: 0; color: var(--muted); }
+  .card { background: var(--card); border-radius: 24px; padding: 22px 18px; margin-top: 24px; border: 1px solid var(--line); }
+  .label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .code { font: 700 36px/1.1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .22em; margin: 8px 0 16px; padding-left: .22em; }
+  .btn {
+    display: block; width: 100%; padding: 16px; border-radius: 999px; border: 0;
+    font: 600 17px/1 inherit; font-family: inherit; text-decoration: none; cursor: pointer;
+  }
+  .primary { background: var(--lime); color: var(--ink); }
+  .secondary { background: transparent; color: var(--accent); margin-top: 8px; }
+  .steps { text-align: left; margin: 22px 4px 0; padding: 0; list-style: none; color: var(--muted); font-size: 15px; }
+  .steps li { display: flex; gap: 10px; margin: 8px 0; }
+  .steps b { color: var(--text); font-weight: 600; }
+  .n { flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--line); color: var(--text); font-size: 13px; font-weight: 700; display: grid; place-items: center; }
+  .error h1 { font-size: 22px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="../logo.png" alt="" width="84" height="84">
+
+  <section id="invite" hidden>
+    <h1>A friend invited you to Onz</h1>
+    <p>Plan trips together and live them together. Sign up with this code so your friend gets the credit.</p>
+    <div class="card">
+      <div class="label">Friend's code</div>
+      <div class="code" id="code" aria-live="polite"></div>
+      <a class="btn primary" id="open" href="#">Open in Onz</a>
+      <button class="btn secondary" id="copy" type="button">Copy code</button>
+    </div>
+    <ol class="steps">
+      <li><span class="n">1</span><span>Tap <b>Open in Onz</b>. The code fills in for you after you sign up.</span></li>
+      <li><span class="n">2</span><span>Nothing happened? Open Onz → Profile → <b>Trip credits</b> → <b>Got a friend's code?</b> within your first week.</span></li>
+    </ol>
+  </section>
+
+  <section id="bad" class="error" hidden>
+    <h1>This link is incomplete</h1>
+    <p>Ask your friend for their 6-character code, then enter it in Onz → Profile → <b>Trip credits</b>.</p>
+  </section>
+</main>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var raw = (params.get("code") || params.get("c") || location.hash.replace("#", "") || "")
+    .toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (!/^[A-Z0-9]{6}$/.test(raw)) {
+    document.getElementById("bad").hidden = false;
+    return;
+  }
+  var appURL = "onz://ref/" + raw;
+  document.getElementById("invite").hidden = false;
+  document.getElementById("code").textContent = raw;
+  document.title = "Join Onz with code " + raw;
+  var open = document.getElementById("open");
+  open.href = appURL;
+
+  var copy = document.getElementById("copy");
+  copy.addEventListener("click", function () {
+    var done = function () { copy.textContent = "Copied ✓"; setTimeout(function () { copy.textContent = "Copy code"; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(raw).then(done, done);
+    } else { done(); }
+  });
+
+  // Try once on arrival (Safari asks "Open in Onz?"); the button stays for
+  // browsers inside chat apps, which only open apps from a real tap.
+  setTimeout(function () { location.href = appURL; }, 400);
+})();
+</script>
+</body>
+</html>

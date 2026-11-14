@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TS2J567GQY.com.mosesyek.onz"],
+        "components": [
+          { "/": "/join/*", "comment": "Trip invites: /join/?code=ABC123" },
+          { "/": "/r/*", "comment": "Referral links: /r/?code=ABC123" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["TS2J567GQY.com.mosesyek.onz"]
+  }
+}
